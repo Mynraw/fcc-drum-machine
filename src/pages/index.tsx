@@ -1,7 +1,9 @@
+import DrumMachine from "@component/components/DrumMachine";
+
 export default function Home() {
   return (
     <main>
-      <h1 className="text-red-500">works!</h1>
+      <DrumMachine />
     </main>
   );
 }
