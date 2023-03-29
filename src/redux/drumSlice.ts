@@ -5,7 +5,6 @@ const drumSlice = createSlice({
     initialState: {
         disabled: false,
         drumAction: "",
-        bank: false,
         volume: 0,
     },
     reducers: {
@@ -15,14 +14,11 @@ const drumSlice = createSlice({
         currentAction: (state, action) => {
             state.drumAction = action.payload;
         },
-        switchBank: (state) => {
-            state.bank = !state.bank;
-        },
         volumeLevel: (state, action) => {
             state.volume = action.payload;
         }
     }
 })
 
-export const { powerSwitch, currentAction, switchBank, volumeLevel } = drumSlice.actions;
+export const { powerSwitch, currentAction, volumeLevel } = drumSlice.actions;
 export default drumSlice.reducer;

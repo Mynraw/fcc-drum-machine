@@ -1,10 +1,8 @@
 import PowerButton from "@component/assets/PowerButton";
-import BankButton from "@component/assets/BankButton";
 import DrumPad from "@component/assets/DrumPad";
 import FccNav from "@component/assets/FccNav";
 import ActionLabel from "@component/assets/ActionLabel";
 import RangeBar from "@component/assets/RangeBar";
-import { BaseSyntheticEvent } from "react";
 
 const DrumMachine = () => {
   return (
@@ -16,7 +14,6 @@ const DrumMachine = () => {
           <PowerButton />
           <ActionLabel />
           <RangeBar />
-          <BankButton />
         </div>
       </div>
     </div>
