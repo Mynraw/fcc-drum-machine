@@ -4,6 +4,7 @@ import DrumPad from "@component/assets/DrumPad";
 import FccNav from "@component/assets/FccNav";
 import ActionLabel from "@component/assets/ActionLabel";
 import RangeBar from "@component/assets/RangeBar";
+import { BaseSyntheticEvent } from "react";
 
 const DrumMachine = () => {
   return (
