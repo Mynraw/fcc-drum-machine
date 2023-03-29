@@ -7,19 +7,24 @@ const DrumPad = () => {
 
   const handleAction = (e: any) => {
     dispatch(currentAction(e.target.id));
+    const audio = new Audio(
+      drumPad.find((pad) => pad.description === e.target.id)?.url
+    );
+    audio.play();
   };
 
   return (
     <div className="grid grid-cols-3 gap-2 py-8">
-      {drumPad.map((pad, index) => (
+      {drumPad.map((pad) => (
         <button
-          id={index.toString()}
+          id={pad.description}
           type="button"
           onClick={handleAction}
-          key={pad}
-          className="bg-gray-500 p-4 text-center w-[80px] h-[80px] rounded-lg shadow-md shadow-black text-xl"
+          key={pad.id}
+          className="bg-[#ba7a13] p-4 text-center text-white w-[80px] h-[80px] rounded-lg shadow-md shadow-black text-xl"
         >
-          {pad}
+          {pad.character}
+          <audio src={pad.url}></audio>
         </button>
       ))}
     </div>
