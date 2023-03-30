@@ -6,6 +6,7 @@ import { BaseSyntheticEvent, ChangeEvent } from "react";
 const DrumPad = () => {
   const dispatch = useDispatch();
   const volume = useSelector((state: any) => state.drum.volume);
+  const powerOff = useSelector((state: any) => state.drum.disabled);
 
   const handleAction = (e: BaseSyntheticEvent) => {
     dispatch(currentAction(e.target.id));
@@ -35,6 +36,7 @@ const DrumPad = () => {
     <div className="grid grid-cols-3 gap-2 py-8" onKeyDown={handleKeyPress}>
       {drumPad.map((pad) => (
         <button
+          disabled={powerOff}
           id={pad.description}
           type="button"
           onClick={handleAction}

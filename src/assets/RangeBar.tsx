@@ -5,6 +5,7 @@ import { volumeLevel, currentAction } from "../redux/drumSlice";
 const RangeBar = () => {
   const dispatch = useDispatch();
   const volume = useSelector((state: any) => state.drum.volume);
+  const powerOff = useSelector((state: any) => state.drum.disabled);
 
   const handleVolumeChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(volumeLevel(e.target.value));
@@ -18,6 +19,7 @@ const RangeBar = () => {
       step={1}
       value={volume}
       className="w-full"
+      disabled={powerOff}
       onChange={handleVolumeChange}
     />
   );

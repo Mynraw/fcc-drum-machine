@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { powerSwitch } from "../redux/drumSlice";
+import { powerSwitch, currentAction } from "../redux/drumSlice";
 
 const PowerButton = () => {
   const dispatch = useDispatch();
@@ -7,6 +7,7 @@ const PowerButton = () => {
 
   const handlePower = () => {
     dispatch(powerSwitch());
+    dispatch(currentAction(drumActive ? "ON" : "OFF"));
   };
   return (
     <div className="flex flex-col items-center">
