@@ -18,7 +18,7 @@ const PowerButton = () => {
         onClick={handlePower}
       >
         <span
-          className={`bg-blue-700 w-5 h-5 cursor-pointer ${
+          className={`bg-green-600 w-5 h-5 cursor-pointer ${
             drumActive ? "float-left" : "float-right"
           }`}
         ></span>
