@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { currentAction } from "@component/redux/drumSlice";
 import { drumPad } from "@component/pages/api/drumPad";
 import { BaseSyntheticEvent, ChangeEvent } from "react";
 
 const DrumPad = () => {
   const dispatch = useDispatch();
+  const volume = useSelector((state: any) => state.drum.volume);
 
   const handleAction = (e: BaseSyntheticEvent) => {
     dispatch(currentAction(e.target.id));
@@ -12,6 +13,8 @@ const DrumPad = () => {
     const audio = new Audio(
       drumPad.find((pad) => pad.description === e.target.id)?.url
     );
+    // accepts values between 0-1
+    audio.volume = volume / 100;
     audio.play();
   };
 
@@ -23,13 +26,10 @@ const DrumPad = () => {
     if (foundKey) {
       dispatch(currentAction(foundKey.description));
       const audio = new Audio(foundKey.url);
+      audio.volume = volume / 100;
       audio.play();
     }
   };
-
-  // const handleVolume = (e: ChangeEvent<HTMLAudioElement>) => {
-  //   console.log(e);
-  // };
 
   return (
     <div className="grid grid-cols-3 gap-2 py-8" onKeyDown={handleKeyPress}>
@@ -42,11 +42,7 @@ const DrumPad = () => {
           className="bg-[#ba7a13] p-4 text-center text-white w-[80px] h-[80px] rounded-lg shadow-md shadow-black text-xl"
         >
           {pad.character}
-          <audio
-            id={pad.character}
-            src={pad.url}
-            // onVolumeChange={handleVolume}
-          ></audio>
+          <audio id={pad.character} src={pad.url}></audio>
         </button>
       ))}
     </div>
